@@ -1,1 +1,5 @@
-http://zuzara.com/blog/2010/05/15/jquery-plugin-for-twitter-oauth-via-popup-window-facebook-style/
+usage:
+$.oauthpopup({path:'/auth/twitter'});
+
+demo:
+http://zuzara.org/pub/oauth_popup/
