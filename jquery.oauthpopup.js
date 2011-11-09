@@ -7,19 +7,25 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  */
-(function(jQuery){
+(function($){
     //  inspired by DISQUS
-    jQuery.oauthpopup = function(options)
+    $.oauthpopup = function(options)
     {
-        options.windowName = options.windowName ||  'ConnectWithOAuth'; // should not include space for IE
-        options.windowOptions = options.windowOptions || 'location=0,status=0,width=800,height=400';
-        options.callback = options.callback || function(){ window.location.reload(); };
+        if (!options || !options.path) {
+            throw new Error("options.path must not be empty");
+        }
+        $.extend({
+            windowName: 'ConnectWithOAuth' // should not include space for IE
+          , windowOptions: 'location=0,status=0,width=800,height=400'
+          , callback: function(){ window.location.reload(); }
+        }, options);
+
         var that = this;
 
-        that._oauthWindow = window.open(options.path, options.windowName, options.windowOptions);
-        that._oauthInterval = window.setInterval(function(){
-            if (that._oauthWindow.closed) {
-                window.clearInterval(that._oauthInterval);
+        that.oauthWindow   = window.open(options.path, options.windowName, options.windowOptions);
+        that.oauthInterval = window.setInterval(function(){
+            if (that.oauthWindow.closed) {
+                window.clearInterval(that.oauthInterval);
                 options.callback();
             }
         }, 1000);
