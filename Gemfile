@@ -1,0 +1,5 @@
+source 'http://rubygems.org'
+gem 'json'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'sinatra'

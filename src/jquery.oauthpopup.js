@@ -20,12 +20,10 @@
           , callback: function(){ window.location.reload(); }
         }, options);
 
-        var that = this;
-
-        that.oauthWindow   = window.open(options.path, options.windowName, options.windowOptions);
-        that.oauthInterval = window.setInterval(function(){
-            if (that.oauthWindow.closed) {
-                window.clearInterval(that.oauthInterval);
+        var oauthWindow   = window.open(options.path, options.windowName, options.windowOptions);
+        var oauthInterval = window.setInterval(function(){
+            if (oauthWindow.closed) {
+                window.clearInterval(oauthInterval);
                 options.callback();
             }
         }, 1000);
