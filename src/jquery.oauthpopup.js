@@ -14,7 +14,7 @@
         if (!options || !options.path) {
             throw new Error("options.path must not be empty");
         }
-        $.extend({
+        options = $.extend({
             windowName: 'ConnectWithOAuth' // should not include space for IE
           , windowOptions: 'location=0,status=0,width=800,height=400'
           , callback: function(){ window.location.reload(); }
