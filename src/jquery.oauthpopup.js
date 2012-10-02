@@ -31,27 +31,18 @@
             }, options);
 
             var oauthWindow = window.open(options.path, options.windowName, options.windowOptions),
-                oauthInterval = 0,
-                callback = function() {
-                    if (oauthInterval > 0) {
-                        window.clearInterval(oauthInterval);
-                    }
-                    if (!oauthWindow.closed) {
-                        oauthWindow.close();
-                    }
-                    //pass all arguments to callback
-                    options.callback.apply(null, arguments);
-                };
-            $(oauthWindow.document).ready(function(){
-                var setPopupPropertiesInterval = setInterval(
-                    function setPopupProperties() {
-                        oauthWindow.callback = callback;
-                        if (oauthWindow.closed || oauthWindow.callback) {
-                            clearInterval(setPopupPropertiesInterval);
-                        }
-                    }, 1
-                );
-            });
+                oauthInterval = 0;
+            oauthCallback = function() {
+                if (oauthInterval > 0) {
+                    window.clearInterval(oauthInterval);
+                }
+                if (!oauthWindow.closed) {
+                    oauthWindow.close();
+                }
+                //pass all arguments to callback
+                options.callback.apply(null, arguments);
+                window.oauthCallback = null;
+            };
             oauthInterval = setInterval(function(){
                 if (oauthWindow.closed) {
                     callback();
