@@ -42,8 +42,17 @@
                     //pass all arguments to callback
                     options.callback.apply(null, arguments);
                 };
-            oauthWindow.callback = callback;
-            oauthInterval = window.setInterval(function(){
+            $(oauthWindow.document).ready(function(){
+                var setPopupPropertiesInterval = setInterval(
+                    function setPopupProperties() {
+                        oauthWindow.callback = callback;
+                        if (oauthWindow.closed || oauthWindow.callback) {
+                            clearInterval(setPopupPropertiesInterval);
+                        }
+                    }, 1
+                );
+            });
+            oauthInterval = setInterval(function(){
                 if (oauthWindow.closed) {
                     callback();
                 }
