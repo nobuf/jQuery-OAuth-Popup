@@ -2,4 +2,6 @@ usage:
 $.oauthpopup({path:'/auth/twitter'});
 
 demo:
-http://zuzara.org/pub/oauth_popup/
+% gem install bundler
+% bundle install
+% ruby demo.rb
