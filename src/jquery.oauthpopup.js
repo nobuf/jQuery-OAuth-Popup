@@ -28,4 +28,11 @@
             }
         }, 1000);
     };
+
+    //bind to element and pop oauth when clicked
+    $.fn.oauthpopup = function(options) {
+        $this = $(this);
+        $this.click($.oauthpopup.bind(this, options));
+    };
 })(jQuery);
+
