@@ -1,7 +1,8 @@
 usage:
 $.oauthpopup({path:'/auth/twitter'});
+$('#clickme').oauthpopup({path:'/auth/twitter'});
 
 demo:
 % gem install bundler
 % bundle install
-% ruby demo.rb
+% bundle exec ruby demo.rb

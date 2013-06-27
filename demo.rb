@@ -17,7 +17,7 @@ get '/' do
   <html>
   <head>
   <title>Twitter OAuth via popup</title>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script src="/jquery.oauthpopup.js"></script>
   </head>
   <body>
@@ -33,10 +33,19 @@ get '/' do
         }
       });
     });
+    $('#connect2').oauthpopup({
+        path: '/auth/twitter',
+        callback: function(){
+          $.get('/user_info', function(data){
+            $('#user_info').html(JSON.stringify(data));
+          });
+        }
+    });
   });
   </script>
   <div id="user_info"></div>
-  <input type="button" value="Connect with Twitter" id="connect" /><br />
+  <input type="button" value="Connect with Twitter (1)" id="connect" /><br />
+  <input type="button" value="Connect with Twitter (2)" id="connect2" /><br />
   <a href="/signout">Sign Out</a>
   </body>
   </html>

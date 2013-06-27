@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 gem 'multi_json'
+gem 'json'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'sinatra', '1.3.1'

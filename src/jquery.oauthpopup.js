@@ -1,7 +1,7 @@
 /*!
  * jQuery OAuth via popup window plugin
  *
- * @author  Nobu Funaki @zuzara
+ * @author  Nobu Funaki @nobuf
  *
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
