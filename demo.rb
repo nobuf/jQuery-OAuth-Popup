@@ -6,6 +6,7 @@ require 'json'
 
 enable :sessions
 enable :static
+set :bind, '0.0.0.0'
 set :public_folder, './src'
 use Rack::Session::Cookie
 use OmniAuth::Builder do
